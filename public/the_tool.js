@@ -137,10 +137,10 @@ function(b){if("interactive"===b.readyState)return P=b}),l=P;l&&(b||(b=l.getAttr
 
 mcReqJs.register({
 	"id":"the_tool",
-	"baseUrl":"http://desa.despegar.com.ar:3000/",
+	"baseUrl":"//127.0.0.1:3000/",
 	"modules":"main",
 	"shim": {
-		"xhook": {
+        /*"xhook": {
 			"exports": "Xhook"
 		},
 		"trace": {
@@ -149,12 +149,10 @@ mcReqJs.register({
 		},
 		"jquery" : {
 			"exports" : "Jquery"
-		}
-	},	
+		}*/
+	},
 	"paths":{
-		"jquery":"libs/jquery-1.7.2.min.js",
-		"xhook":"libs/xhook.js",
-		"trace":"libs/trace.js"
+		"jquery":"//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
 	}
 
 });

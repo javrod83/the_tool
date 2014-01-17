@@ -1,5 +1,5 @@
 
-define(["xhook"], function(xhook)
+define([], function()
 {
 
     filter = {

@@ -1,10 +1,11 @@
+/*
 require([
-	
+
 	"trace",
 	"http://desa.despegar.com.ar:3000/requestFilter.js"
 		],
 function(
-	
+
 	trace,
 	requestFilter
 ) {
@@ -21,5 +22,9 @@ function(
         "action": "include",
         "codes": "all"
     });
+
+});*/
+
+define(["libs/trace", "libs/requestFilter", "libs/xhook"], function(Trace, RF) {
 
 });

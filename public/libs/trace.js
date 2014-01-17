@@ -1,7 +1,6 @@
 define(["jquery"], function($)
 {
 
-
 /*
 (function( jQuery ) {
 if ( window.XDomainRequest ) {
