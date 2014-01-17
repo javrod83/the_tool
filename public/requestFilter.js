@@ -1,13 +1,6 @@
-/**
- * Utilidades - Mi despegar
- */
 
-define([
-    "common/modules/logger"
-
-], function(
-    logger
-) {
+define(["xhook"], function(xhook)
+{
 
     filter = {
         by_status: false,
@@ -24,12 +17,15 @@ define([
         }
     };
 
-    var xhook = null;
+
+    console.log(xhook);
+    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    
     var listener = null;
 
-    function init(xHookObject, _listener) {
+    function init( _listener) {
 
-        logger.info("[INFO] Inicializando request filter.");
+        console.log("[INFO] Inicializando request filter.");
 
         if (!Array.prototype.indexOf) {
             Array.prototype.indexOf = function(needle) {
@@ -42,7 +38,6 @@ define([
             };
         }
 
-        xhook = xHookObject;
         listener = _listener;
 
         xhook.after(function(request, response) {
@@ -54,7 +49,7 @@ define([
 
 
     function _filter(request, response) {
-        logger.info("[INFO]request filter called ! ");
+        console.log("[INFO]request filter called ! ");
         //filtering by url ? 
         if (filter.by_url) 
             {
@@ -111,7 +106,7 @@ define([
 
     function by_status(params) {
 
-        logger.info("filter requests : by status");
+        console.log("filter requests : by status");
         if ("action" in params && "codes" in params) {
             filter.by_status = true;
 
@@ -156,7 +151,7 @@ define([
 
     function _set_include_all_status_codes_filter() {
 
-         logger.info("filter requests : _set_include_all_status_codes_filter ");
+         console.log("filter requests : _set_include_all_status_codes_filter ");
 
         return function(request, response) {
 
