@@ -62,7 +62,7 @@ navigator.sayswho = (function(){
 
 window.onerror = function(errorMsg, file, lineNumber) {
 
-    $.post('http://127.0.0.1:3000/store_error', {
+    $.post('http://10.221.20.42:3010/storeJsError', {
       
         uid:             window.location.href.substring(window.location.href.lastIndexOf("=") + 1),
         error_message:   errorMsg,

@@ -25,6 +25,20 @@ function(
 
 });*/
 
-define(["libs/trace", "libs/requestFilter", "libs/xhook"], function(Trace, RF) {
+define(["libs/trace", "libs/requestFilter", "libs/xhook"], function(Trace, requestFilter) {
+
+      var client = {
+        register: function(obj) {
+            console.log("ALL RIGHT !!!!");
+            console.log(obj);
+        }
+    };
+
+    requestFilter.init(client);
+    requestFilter.by_status({
+        "action": "include",
+        "codes": "all"
+    });
+
 
 });

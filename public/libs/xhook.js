@@ -1,6 +1,8 @@
 define([], function()
 {
 
+  var leHook;
+
 // XHook - v1.0.7 - https://github.com/jpillora/xhook
 // Jaime Pillora <dev@jpillora.com> - MIT Copyright 2013
 (function(window,document,undefined) {
@@ -337,14 +339,11 @@ window.XMLHttpRequest = function() {
 };
 
 window.xhook = xhook;
+leHook = xhook;
 }(window,document));
 
 
         // API Publica
-        return {
-
-            xhook: xhook
-
-        };
+        return leHook;
 
 });
