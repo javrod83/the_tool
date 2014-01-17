@@ -5,7 +5,7 @@ var app = express();
 var reqCounter = 0 ; 
 
 
-app.use('/requestFilter.js',function(req,res,next){
+app.use('/the_tool.js',function(req,res,next){
 
   console.log("req n:"+reqCounter++);
   console.log('called');
