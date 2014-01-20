@@ -1,29 +1,17 @@
-define(["libs/trace", "libs/requestFilter","libs/brodcaster", "libs/xhook"], function(trace, requestFilter,brodcaster) {
+define(["libs/trace", "libs/requestFilter","libs/brodcaster", "libs/xhook"], function(trace, requestFilter, brodcaster) {
 
-      var client = {
-        register: function(obj) {
-            console.log("ALL RIGHT !!!!");
-            console.log(obj);
+    var options = {
+        trace: {},
+        requestFilter: {
+            filterBy: 'by_status',
+            parameters: {
+                "action": "include",
+                "codes": "all"
+            }
         }
     };
 
-    
-
-
-    requestFilter.init(brodcaster,"http://10.221.20.42:3010/storeRestError");
-    requestFilter.by_status({
-        "action": "include",
-        "codes": "all"
-    });
-
-
-
-
-
-
+    trace.init(brodcaster,"http://10.221.20.42:3010/storeJsError", options.trace);
+    requestFilter.init(brodcaster,"http://10.221.20.42:3010/storeRestError", options.requestFilter);
 
 });
-
-
-
-//http://10.221.20.42:3010/storeRestError

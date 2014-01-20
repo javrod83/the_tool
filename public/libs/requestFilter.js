@@ -19,7 +19,7 @@ define(["libs/xhook"], function(xhook)
     var listener = null;
     var report_url = null;
 
-    function init( _listener,_report_url) {
+    function init( _listener, _report_url, _options) {
 
         console.log("[INFO] Inicializando request filter.");
 
@@ -41,7 +41,19 @@ define(["libs/xhook"], function(xhook)
             _filter(request, response);
 
         });
-        //read and load params 
+
+        console.log('params');
+        console.log(_options.parameters);
+
+        var filterCall = {
+            by_status : by_status,
+            by_url : by_url
+        };
+
+        //read and load params
+
+        filterCall[_options.filterBy](_options.parameters);
+
     }
 
 

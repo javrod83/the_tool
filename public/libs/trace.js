@@ -1,6 +1,9 @@
 define(["jquery"], function($)
 {
 
+    var listener = null;
+    var report_url = null;
+
     /*
     (function( jQuery ) {
     if ( window.XDomainRequest ) {
@@ -47,7 +50,6 @@ define(["jquery"], function($)
     })( jQuery );
     */
 
-
     navigator.sayswho = (function(){
         var ua= navigator.userAgent, tem,
         M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*([\d\.]+)/i) || [];
@@ -61,9 +63,27 @@ define(["jquery"], function($)
     })();
 
     window.onerror = function(errorMsg, file, lineNumber) {
+        _log_this(errorMsg, file, lineNumber)
+    };
 
-        $.post('http://10.221.20.42:3010/storeJsError', {
+    var gOldOnError = window.onerror;
+    // Override previous handler.
+    window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+        if (gOldOnError){
+        // Call previous handler.
+           gOldOnError(errorMsg, url, lineNumber);
+        }
+        // Just let default handler run.
+        return false;
+    }
 
+    function init( _listener, _report_url, _options) {
+        listener = _listener;
+        report_url = _report_url;
+    }
+
+    function _log_this(errorMsg, file, lineNumber) {
+        listener.report(report_url,{
             uid:             window.location.href.substring(window.location.href.lastIndexOf("=") + 1),
             error_message:   errorMsg,
             file:            file.substring(file.lastIndexOf("/") + 1).replace('.','-[').concat(']'),
@@ -72,28 +92,13 @@ define(["jquery"], function($)
             line_number:     lineNumber,
             user_agent:      navigator.sayswho
             //the_event :    JSON.stringify(window.event.error, true, 2)
-
         });
-
-    };
-
-    var gOldOnError = window.onerror;
-    // Override previous handler.
-    window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
-
-        if (gOldOnError){
-        // Call previous handler.
-           gOldOnError(errorMsg, url, lineNumber);
-
-        }
-
-        // Just let default handler run.
-        return false;
-
     }
 
-    console.log(window.onerror)
-
+    // API Publica
+    return {
+        init: init
+    };
 
 });
 
