@@ -139,18 +139,6 @@ mcReqJs.register({
 	"id":"the_tool",
 	"baseUrl":"//127.0.0.1:3000/",
 	"modules":"main",
-	"shim": {
-        /*"xhook": {
-			"exports": "Xhook"
-		},
-		"trace": {
-			"deps": ["jquery"],
-			"exports": "Trace"
-		},
-		"jquery" : {
-			"exports" : "Jquery"
-		}*/
-	},
 	"paths":{
 		"jquery":"//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min",
 	}

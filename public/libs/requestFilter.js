@@ -15,14 +15,11 @@ define(["libs/xhook"], function(xhook)
             }
         }
     };
-
-
-    console.log(xhook);
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
     
     var listener = null;
+    var report_url = null;
 
-    function init( _listener) {
+    function init( _listener,_report_url) {
 
         console.log("[INFO] Inicializando request filter.");
 
@@ -38,6 +35,7 @@ define(["libs/xhook"], function(xhook)
         }
 
         listener = _listener;
+        report_url =_report_url;
 
         xhook.after(function(request, response) {
             _filter(request, response);
@@ -50,6 +48,14 @@ define(["libs/xhook"], function(xhook)
     function _filter(request, response) {
         console.log("[INFO]request filter called ! ");
         //filtering by url ? 
+
+
+        if (request.url == report_url)
+            {
+                
+                return 0 ;
+            }
+
         if (filter.by_url) 
             {
             console.log("Filtering urls: TRUE ");
@@ -194,10 +200,12 @@ define(["libs/xhook"], function(xhook)
     }
 
     function _log_this(request, response) {
-        listener.register({
+        listener.report(report_url,{
             "request": request,
             "response": response
         });
+
+
     }
 
 
@@ -211,13 +219,3 @@ define(["libs/xhook"], function(xhook)
 
 });
 
-
-
-
-
-// modulo de filtros para parsear respuestas fallidas 
-//criteria:
-// catch all errors 
-//catch all client errors 
-//catch all server errors 
-//match error by code

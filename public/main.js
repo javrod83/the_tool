@@ -1,31 +1,4 @@
-/*
-require([
-
-	"trace",
-	"http://desa.despegar.com.ar:3000/requestFilter.js"
-		],
-function(
-
-	trace,
-	requestFilter
-) {
-
-    var client = {
-        register: function(obj) {
-            console.log("ALL RIGHT !!!!");
-            console.log(obj);
-        }
-    };
-
-    requestFilter.init(client);
-    requestFilter.by_status({
-        "action": "include",
-        "codes": "all"
-    });
-
-});*/
-
-define(["libs/trace", "libs/requestFilter", "libs/xhook"], function(Trace, requestFilter) {
+define(["libs/trace", "libs/requestFilter","libs/brodcaster", "libs/xhook"], function(trace, requestFilter,brodcaster) {
 
       var client = {
         register: function(obj) {
@@ -34,11 +7,23 @@ define(["libs/trace", "libs/requestFilter", "libs/xhook"], function(Trace, reque
         }
     };
 
-    requestFilter.init(client);
+    
+
+
+    requestFilter.init(brodcaster,"http://10.221.20.42:3010/storeRestError");
     requestFilter.by_status({
         "action": "include",
         "codes": "all"
     });
 
 
+
+
+
+
+
 });
+
+
+
+//http://10.221.20.42:3010/storeRestError
