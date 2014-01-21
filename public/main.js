@@ -1,7 +1,10 @@
-define(["libs/trace", "libs/requestFilter","libs/brodcaster", "libs/xhook"], function(trace, requestFilter, brodcaster) {
+define(["libs/trace", "libs/requestFilter","libs/brodcaster"], function(trace, requestFilter, brodcaster) {
 
     var options = {
-        trace: {},
+        trace: {
+            //coverage : "defaultCoverage"
+            coverage : "stackCoverage"
+        },
         requestFilter: {
             filterBy: 'by_status',
             parameters: {

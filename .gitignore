@@ -1,2 +1,4 @@
 node_modules
 /.idea
+/wctt_server/node_modules
+/wctt_server/.idea
