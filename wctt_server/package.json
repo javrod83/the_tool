@@ -1,0 +1,29 @@
+{
+  "name": "store.js",
+  "description": "ManagerStore - Storage support for test manager",
+  "author": {
+    "name": "Gabriel",
+    "email": "gboiero@despegar.com",
+    "url": "http://www.despegar.com"
+  },
+  "keywords": [
+    "test",
+    "proxy",
+    "service",
+    "services"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "express" : "3.x",
+    "mongoose" : "*",
+    "node-ini" : "*",
+    "connect": "*",
+    "connect-mongoose": "*",
+    "async":  "*",
+    "request" : "*",
+    "despegar-logger" : "git://gitorious.despegar.it/dtalk-common/loggerdespegar.git"
+  }
+}
